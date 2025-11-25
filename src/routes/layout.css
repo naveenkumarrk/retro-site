@@ -1,1 +1,63 @@
 @import 'tailwindcss';
+
+@theme {
+	--color-retro-bone: #f0eee6;
+	--color-retro-black: #1a1a1a;
+}
+
+:global(body) {
+	background: linear-gradient(
+		135deg,
+		#1a1a2e 0%,
+		#16213e 25%,
+		#0f3460 50%,
+		#16213e 75%,
+		#1a1a2e 100%
+	);
+	background-size: 400% 400%;
+	animation: gradientShift 25s ease infinite;
+	position: relative;
+	min-height: 100vh;
+}
+
+:global(body::before) {
+	content: '';
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-image:
+		linear-gradient(rgba(0, 255, 255, 0.04) 1px, transparent 1px),
+		linear-gradient(90deg, rgba(0, 255, 255, 0.04) 1px, transparent 1px);
+	background-size: 50px 50px;
+	pointer-events: none;
+	z-index: 0;
+}
+
+:global(body::after) {
+	content: '';
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background:
+		radial-gradient(circle at 20% 50%, rgba(138, 43, 226, 0.12) 0%, transparent 50%),
+		radial-gradient(circle at 80% 80%, rgba(0, 191, 255, 0.12) 0%, transparent 50%),
+		radial-gradient(circle at 50% 20%, rgba(255, 20, 147, 0.08) 0%, transparent 50%);
+	pointer-events: none;
+	z-index: 0;
+}
+
+@keyframes gradientShift {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
